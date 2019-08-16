@@ -13,7 +13,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/reposit
 && apk --no-cache add --virtual=builddeps build-base curl-dev jpeg-dev openssl-dev python-dev zlib-dev wget py2-pip \
 && wget https://github.com/ccrisan/motioneye/archive/${MOTIONEYE_VERSION}.tar.gz \
 && tar -xvf ${MOTIONEYE_VERSION}.tar.gz \
-&& cd motioneye-${MOTIONEYE_VERSION} &&  pip install . \
+&& cd motioneye-${MOTIONEYE_VERSION} && pip install . \
 && apk del builddeps \
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
