@@ -1,5 +1,6 @@
 # Motioneye Linux app, Dockerized and on Alpine
 
+```shell
 docker run \
    --device=/dev/video0                       # (optional) if you will use a local v4l camera \
     -p 8765:8765                              # web interface of MotionEye \
@@ -9,6 +10,7 @@ docker run \
     -e UID=1000 \                             # User ID \
     -e GID=100 \                              # Group ID \
     djaydev/motioneye
+```
 
 First run will start with motioneye default settings, but if you want to start with your own motioneye.conf configuration file save it /mnt/appdata/motioneye/motioneye.conf.
 
