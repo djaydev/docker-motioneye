@@ -1,7 +1,7 @@
 # Motioneye Linux app, Dockerized and on Alpine
 
 ```shell
-docker run \
+docker run -d \
    --device=/dev/video0                       # (optional) if you will use a local v4l camera \
     -p 8765:8765                              # web interface of MotionEye \
     -e TZ="America/New_York"                  # your timezone \
