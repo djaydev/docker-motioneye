@@ -6,6 +6,8 @@ ENV GID=100
 # Define software versions.
 ARG MOTIONEYE_VERSION=0.41rc1
 
+WORKDIR /tmp
+
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
 && apk --no-cache add py2-pillow motion python curl openssl tzdata py-setuptools \
 && apk --no-cache add --virtual=builddeps build-base curl-dev jpeg-dev openssl-dev python-dev zlib-dev wget py2-pip \
