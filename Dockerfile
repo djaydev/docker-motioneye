@@ -18,6 +18,9 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/reposit
 COPY startapp.sh /startapp.sh
 RUN  chmod +x /startapp.sh
 
+HEALTHCHECK --interval=1m --timeout=10s \
+  CMD nc -z localhost 8765 || exit 1
+
 CMD /startapp.sh /usr/bin/meyectl startserver -c /etc/motioneye/motioneye.conf
 
 EXPOSE 8765
