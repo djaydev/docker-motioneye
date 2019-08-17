@@ -10,7 +10,7 @@ WORKDIR /tmp
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
 && apk --no-cache add py2-pillow motion python curl openssl tzdata py-setuptools \
-&& apk --no-cache add --virtual=builddeps build-base curl-dev jpeg-dev openssl-dev python-dev zlib-dev wget py2-pip \
+&& apk --no-cache add --virtual=builddeps build-base curl-dev jpeg-dev openssl-dev python-dev zlib-dev wget \
 && wget https://github.com/ccrisan/motioneye/archive/${MOTIONEYE_VERSION}.tar.gz \
 && tar -xvf ${MOTIONEYE_VERSION}.tar.gz \
 && cd motioneye-${MOTIONEYE_VERSION} && pip install . \
