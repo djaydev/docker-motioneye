@@ -15,7 +15,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/reposit
 && tar -xvf ${MOTIONEYE_VERSION}.tar.gz \
 && cd motioneye-${MOTIONEYE_VERSION} && pip install . \
 && apk del builddeps \
-&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+&& rm -rf /var/cache/apk/* /tmp/* /tmp/.[!.]*
 
 COPY startapp.sh /startapp.sh
 RUN  chmod +x /startapp.sh
