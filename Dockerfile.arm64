@@ -1,4 +1,4 @@
-FROM balenalib/generic-aarch64-alpine AS builder
+FROM balenalib/generic-aarch64-alpine
 
 RUN [ "cross-build-start" ]
 
