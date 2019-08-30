@@ -30,4 +30,5 @@ HEALTHCHECK --interval=1m --timeout=10s \
 CMD /startapp.sh /usr/bin/meyectl startserver -c /etc/motioneye/motioneye.conf
 
 EXPOSE 8765
+
 RUN [ "cross-build-end" ]
