@@ -35,6 +35,8 @@ ensure_user () {
 
 ensure_user motioneye $UID $GID
 
+sed -i "s#/var/log#/etc/motioneye#g" /etc/motioneye/motioneye.conf
+
 chown -R $UID:$GID /etc/motioneye /var/run /var/log /var/lib/motioneye /run
 
 chmod -R 777 /etc/motioneye /var/run /var/log /var/lib/motioneye /run
