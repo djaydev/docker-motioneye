@@ -9,10 +9,8 @@ ARG MOTIONEYE_VERSION=0.41
 WORKDIR /tmp
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
-&& apk --no-cache add py2-pillow python2 curl openssl tzdata py-setuptools bash libwebp busybox ffmpeg jpeg libmicrohttpd libwebp v4l-utils \
-&& apk --no-cache add --virtual=builddeps build-base git libtool curl-dev jpeg-dev ffmpeg-dev libwebp-dev	v4l-utils-dev openssl-dev autoconf automake libmicrohttpd-dev python2-dev zlib-dev wget py2-pip \
-&& git clone --branch 4.2 https://github.com/Motion-Project/motion.git \
-&& cd motion && autoreconf -fiv && ./configure --without-pgsql --without-sqlite3 --without-mysql && make && make install \
+&& apk --no-cache add py2-pillow python2 curl openssl tzdata py-setuptools bash motion jpeg v4l-utils \
+&& apk --no-cache add --virtual=builddeps build-base curl-dev jpeg-dev openssl-dev python2-dev zlib-dev wget tar py2-pip \
 && cd /tmp && wget https://github.com/ccrisan/motioneye/archive/${MOTIONEYE_VERSION}.tar.gz \
 && tar -xvf ${MOTIONEYE_VERSION}.tar.gz \
 && cd motioneye-${MOTIONEYE_VERSION} && pip install --no-cache-dir . \
