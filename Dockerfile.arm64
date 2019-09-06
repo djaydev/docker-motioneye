@@ -1,4 +1,9 @@
-FROM balenalib/generic-aarch64-alpine
+FROM arm64v8/alpine:edge
+
+COPY --from=balenalib/generic-aarch64-alpine /usr/bin/qemu-aarch64-static /usr/bin/qemu-aarch64-static
+COPY --from=balenalib/generic-aarch64-alpine /usr/bin/resin-xbuild /usr/bin/resin-xbuild
+COPY --from=balenalib/generic-aarch64-alpine /usr/bin/cross-build-start /usr/bin/cross-build-start
+COPY --from=balenalib/generic-aarch64-alpine /usr/bin/cross-build-end /usr/bin/cross-build-end
 
 RUN [ "cross-build-start" ]
 
