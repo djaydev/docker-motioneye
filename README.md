@@ -7,8 +7,8 @@ docker run -d \
     -e TZ="America/New_York"                  # your timezone \
     -v /mnt/appdata/motioneye:/etc/motioneye  # configuration files \
     -v /mnt/user/camera/:/var/lib/motioneye   # captured movies and pictures \
-    -e UID=1000 \                             # User ID \
-    -e GID=100 \                              # Group ID \
+    -e UID=1000                               # User ID \
+    -e GID=100                                # Group ID \
     djaydev/motioneye
 ```
 
@@ -18,4 +18,4 @@ If you need a specific UID and/or GID, add -e UID:1000 -e GID:100 to your docker
 
 ## Credits
 
-startup script edited from <https://github.com/tyzbit/motioneye>
+startup script edited from www.github.com/tyzbit/motioneye
