@@ -1,0 +1,24 @@
+FROM alpine:edge
+
+ENV UID=1000
+ENV GID=100
+
+WORKDIR /tmp
+
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
+&& apk --no-cache add py3-pillow curl openssl tzdata py3-setuptools bash motion \
+&& apk --no-cache add --virtual=builddeps build-base curl-dev jpeg-dev openssl-dev python3-dev zlib-dev git tar py3-pip \
+&& git clone --branch python3 https://github.com/ccrisan/motioneye.git \
+&& cd motioneye && pip3 install --no-cache-dir . \
+&& apk del builddeps \
+&& rm -rf /var/cache/apk/* /tmp/* /tmp/.[!.]*
+
+COPY startapp.sh /startapp.sh
+RUN  chmod +x /startapp.sh
+
+HEALTHCHECK --interval=1m --timeout=10s \
+  CMD nc -z localhost 8765 || exit 1
+
+CMD /startapp.sh /usr/bin/meyectl startserver -c /etc/motioneye/motioneye.conf
+
+EXPOSE 8765
