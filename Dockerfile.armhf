@@ -1,4 +1,4 @@
-FROM arm32v7/alpine:edge
+FROM arm32v7/alpine:3.11
 
 COPY --from=balenalib/raspberrypi3-alpine /usr/bin/qemu-arm-static /usr/bin/qemu-arm-static
 COPY --from=balenalib/raspberrypi3-alpine /usr/bin/resin-xbuild /usr/bin/resin-xbuild
